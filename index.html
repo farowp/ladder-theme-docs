@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarifa — Documentation</title>
+<meta name="description" content="How to install and use the Tarifa Shopify theme: presets, metafields, price breaks and support.">
+<style>
+  :root {
+    --tinta: #1E2A24; --texto: #4A4F4B; --suave: #F4F6F2;
+    --borde: #DDE4DD; --acento: #2F5D46; --marca: #C9D6CD;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--texto); background: #fff; }
+  header { background: var(--tinta); color: #fff; padding: 3.2rem 1.4rem 2.6rem; }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  header p.kicker { margin: 0 0 .5rem; font-size: .72rem; letter-spacing: .18em;
+                    text-transform: uppercase; color: var(--marca); }
+  header h1 { margin: 0 0 .5rem; font-size: 2.2rem; line-height: 1.15; font-weight: 600; }
+  header p.sub { margin: 0; color: #C9D6CD; }
+  main { max-width: 780px; margin: 0 auto; padding: 2.6rem 1.4rem 4rem; }
+  h2 { margin: 2.6rem 0 .8rem; font-size: 1.42rem; color: var(--tinta); line-height: 1.25; }
+  h3 { margin: 1.9rem 0 .5rem; font-size: 1.06rem; color: var(--acento); }
+  p, li { color: var(--texto); }
+  a { color: var(--acento); }
+  code { background: var(--suave); border: 1px solid var(--borde); border-radius: 3px;
+         padding: .1rem .3rem; font-size: .88em; }
+  pre { background: #111613; color: #E6EDE8; padding: 1rem 1.1rem; border-radius: 4px;
+        overflow-x: auto; font-size: .84rem; line-height: 1.5; }
+  pre code { background: none; border: 0; padding: 0; color: inherit; }
+  table { width: 100%; border-collapse: collapse; margin: 1.1rem 0 1.4rem; font-size: .92rem; }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--borde); vertical-align: top; }
+  th { background: var(--suave); color: var(--tinta); font-weight: 600; }
+  blockquote { margin: 1.2rem 0; padding: .2rem 1rem; border-left: 3px solid var(--marca); color: #5E6460; }
+  hr { border: 0; border-top: 1px solid var(--borde); margin: 2.6rem 0; }
+  nav.toc { background: var(--suave); border: 1px solid var(--borde); border-radius: 4px;
+            padding: 1rem 1.2rem; margin: 0 0 2rem; font-size: .92rem; }
+  nav.toc ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+  nav.toc a { text-decoration: none; }
+  footer { border-top: 1px solid var(--borde); padding: 1.6rem 1.4rem; font-size: .85rem; color: #6E746F; }
+  @media (max-width: 640px) { header h1 { font-size: 1.7rem; } table { font-size: .84rem; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="kicker">Theme documentation</p>
+    <h1>Tarifa</h1>
+    <p class="sub">A Shopify theme for catalogues bought in quantities · v0.25.0</p>
+  </div>
+</header>
+<main>
+<p>Tarifa is a Shopify theme for catalogues that are bought in quantities: wholesale price lists, spare parts,
+consumables and training seats. This guide covers installation, the three presets, the metafields the theme reads
+and the quantity discounts.</p>
+<hr />
+<h2 id="1-install">1. Install</h2>
+<ol>
+<li>In your Shopify admin go to <strong>Online Store → Themes</strong>.</li>
+<li>Click <strong>Add theme → Upload zip file</strong> and choose the theme package.</li>
+<li>Click <strong>Customize</strong> to open the theme editor, or <strong>Publish</strong> when you are ready.</li>
+</ol>
+<p>The theme works without any app. You do not need to install anything else to use the price breaks, the quick
+order page or the seven languages.</p>
+<h2 id="2-before-you-start-what-the-theme-expects">2. Before you start: what the theme expects</h2>
+<p>Tarifa reads two product metafields. Both are optional: without them the theme falls back to the defaults set in
+the section.</p>
+<table>
+<thead>
+<tr>
+<th>Metafield</th>
+<th>Type</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>custom.tramos</code></td>
+<td>JSON</td>
+<td>Price breaks for that product</td>
+</tr>
+<tr>
+<td><code>custom.ficha</code></td>
+<td>JSON</td>
+<td>Technical specifications for that product</td>
+</tr>
+</tbody>
+</table>
+<h3 id="customtramos"><code>custom.tramos</code></h3>
+<pre><code class="language-json">[
+  { &quot;q&quot;: 10,  &quot;d&quot;: 5  },
+  { &quot;q&quot;: 25,  &quot;d&quot;: 10 },
+  { &quot;q&quot;: 100, &quot;d&quot;: 18 }
+]
+</code></pre>
+<p><code>q</code> is the minimum quantity, <code>d</code> is the percentage off. Create it in <strong>Settings → Custom data → Products → Add
+definition</strong>, namespace <code>custom</code>, key <code>tramos</code>, type <strong>JSON</strong>.</p>
+<p>If a product has no <code>tramos</code>, the theme uses the three breaks configured in the product section settings.</p>
+<h3 id="customficha"><code>custom.ficha</code></h3>
+<pre><code class="language-json">[
+  { &quot;k&quot;: &quot;Format&quot;,     &quot;v&quot;: &quot;30 ml&quot; },
+  { &quot;k&quot;: &quot;Skin type&quot;,  &quot;v&quot;: &quot;All&quot; },
+  { &quot;k&quot;: &quot;Made in&quot;,    &quot;v&quot;: &quot;Spain&quot; }
+]
+</code></pre>
+<p>Namespace <code>custom</code>, key <code>ficha</code>, type <strong>JSON</strong>. It renders as the specification table on the product page.</p>
+<h2 id="3-presets">3. Presets</h2>
+<p>The theme ships with three presets. Switch between them in the theme editor, under <strong>Theme settings → Presets</strong>.
+Each preset has its own colours, its own homepage and its own demo store.</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>Look</th>
+<th>For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tarifa</strong></td>
+<td>Editorial, warm, generous imagery</td>
+<td>Brands that sell to the public and to the trade</td>
+</tr>
+<tr>
+<td><strong>Trade</strong></td>
+<td>Dense, reference-first, counter-facing</td>
+<td>Catalogues that only speak to professionals</td>
+</tr>
+<tr>
+<td><strong>Industrial</strong></td>
+<td>Dark graphite, orange accent, technical</td>
+<td>Spare parts, MRO, industrial supply</td>
+</tr>
+</tbody>
+</table>
+<p>Presets change presentation only. Your products, pages and content stay where they are.</p>
+<h2 id="4-theme-settings">4. Theme settings</h2>
+<p><strong>Theme settings → Colors</strong> exposes 17 colours: ink, body text, three muted greys, accent, strong accent, brand,
+soft background, two borders, alternate background, surface, button background, button text, overlay panel, text
+on ink, and the logo treatment.</p>
+<p>Changing a colour here changes it everywhere: sections, cards, forms, header and footer all read the same
+variables.</p>
+<p><strong>Theme settings → Typography</strong> sets the body font. <strong>Layout</strong> sets the page width and margins.</p>
+<p>The logo is text by default (<code>Be Shana</code> style). If you upload an image logo instead, the <strong>Logo treatment</strong> setting
+can invert it for dark presets.</p>
+<h2 id="5-sections">5. Sections</h2>
+<p>Every page is built from sections you can reorder, remove and duplicate:</p>
+<ul>
+<li>Slideshow</li>
+<li>Featured collection</li>
+<li>Image with text (banner)</li>
+<li>Testimonials</li>
+<li>Benefits row</li>
+<li>Newsletter</li>
+<li>Page content</li>
+<li>Contact form</li>
+<li>Quick order</li>
+</ul>
+<p>The <strong>Quick order</strong> section puts the catalogue in a table: pick a product or type a reference, set the quantity,
+see the line price with its break applied, and send the whole order to the cart.</p>
+<h2 id="6-price-breaks-what-the-theme-does-and-what-it-does-not">6. Price breaks: what the theme does and what it does not</h2>
+<p>Tarifa <strong>shows</strong> the break table, calculates the line total and updates it as the quantity changes. It does <strong>not</strong>
+apply the discount itself. The discount is applied by Shopify (or by an app) at the cart and checkout.</p>
+<p>To make the discount real, create automatic quantity discounts in <strong>Discounts → Create discount → Amount off
+products → Automatic discount</strong>, one per break, with <strong>Minimum quantity of items</strong> set to the same number as the
+metafield:</p>
+<table>
+<thead>
+<tr>
+<th>Break</th>
+<th>Discount</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10+</td>
+<td>5 %</td>
+<td>Minimum quantity of items: 10</td>
+</tr>
+<tr>
+<td>25+</td>
+<td>10 %</td>
+<td>Minimum quantity of items: 25</td>
+</tr>
+<tr>
+<td>100+</td>
+<td>18 %</td>
+<td>Minimum quantity of items: 100</td>
+</tr>
+</tbody>
+</table>
+<p>Keep the two in sync. If the metafield says 10 % and the Shopify discount says 12 %, the customer sees one price on
+the product page and another at checkout.</p>
+<p>If you are on Shopify Plus, the native alternative is <strong>B2B catalogues with volume pricing</strong>, which sets the price
+per break per variant instead of stacking automatic discounts.</p>
+<h2 id="7-languages">7. Languages</h2>
+<p>Seven interface languages: English, Spanish, French, Italian, German, Portuguese and Dutch. Add them in
+<strong>Settings → Languages</strong>. Right-to-left languages (Arabic, Hebrew, Persian, Urdu) switch the layout direction
+automatically.</p>
+<h2 id="8-accessibility">8. Accessibility</h2>
+<p>Skip link to the content, visible focus, labelled forms, keyboard-operable carousel and menus, and a slideshow that
+respects <code>prefers-reduced-motion</code>.</p>
+<h2 id="9-frequently-asked-questions">9. Frequently asked questions</h2>
+<p><strong>Do I need an app?</strong>
+No. Filters, search, quick view, cart drawer, quick order and languages are part of the theme.</p>
+<p><strong>Why does the cart show a different price than the product page?</strong>
+Because the discount is applied by Shopify at the cart and the break table is informational. Check that the
+automatic discount and the metafield use the same numbers.</p>
+<p><strong>Can I use only the wholesale preset?</strong>
+Yes. Presets share the same code; the content does not change when you switch.</p>
+<p><strong>Where do I change the colours?</strong>
+Theme settings → Colors. All sections read the same variables.</p>
+<p><strong>How do I add a new break?</strong>
+Edit the product metafield or change the three default breaks in the product section settings.</p>
+<h2 id="10-support">10. Support</h2>
+<p>Email: soporte@farowp.com
+Documentation: https://farowp.com/tarifa/documentacion</p>
+<p>Include your store URL, the theme version (Theme settings → Theme info) and a screenshot when something looks
+wrong.</p>
+</main>
+<footer>
+  <div class="wrap">
+    Support: <a href="mailto:soporte@farowp.com">soporte@farowp.com</a> · FaroWP · Be Shana
+  </div>
+</footer>
+</body>
+</html>
