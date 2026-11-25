@@ -5,7 +5,7 @@ Public documentation for **Tarifa**, a Shopify theme for catalogues bought in qu
 
 - Published page: https://farowp.github.io/tarifa-theme-docs/
 - Marketing page: https://farowp.com/shopify
-- Support: soporte@farowp.com
+- Support: hola@farowp.com
 
 The site is a single static page (`index.html`) generated from
 `documentation.md` in the theme project. No build step, no dependencies,
