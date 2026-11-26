@@ -1,9 +1,9 @@
-# Tarifa — theme documentation
+# Ladder — theme documentation
 
-Public documentation for **Tarifa**, a Shopify theme for catalogues bought in quantities
+Public documentation for **Ladder**, a Shopify theme for catalogues bought in quantities
 (wholesale price lists, spare parts, consumables and training seats).
 
-- Published page: https://farowp.github.io/tarifa-theme-docs/
+- Published page: https://farowp.github.io/ladder-theme-docs/
 - Marketing page: https://farowp.com/shopify
 - Support: hola@farowp.com
 
