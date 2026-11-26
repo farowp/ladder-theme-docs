@@ -99,12 +99,13 @@ definition</strong>, namespace <code>custom</code>, key <code>tramos</code>, typ
 <p>If a product has no <code>tramos</code>, the theme uses the three breaks configured in the product section settings.</p>
 <h3 id="customficha"><code>custom.ficha</code></h3>
 <pre><code class="language-json">[
-  { &quot;k&quot;: &quot;Format&quot;,     &quot;v&quot;: &quot;30 ml&quot; },
-  { &quot;k&quot;: &quot;Skin type&quot;,  &quot;v&quot;: &quot;All&quot; },
-  { &quot;k&quot;: &quot;Made in&quot;,    &quot;v&quot;: &quot;Spain&quot; }
+  { &quot;nombre&quot;: &quot;Medida&quot;,      &quot;valor&quot;: &quot;25 × 52 × 15 mm&quot; },
+  { &quot;nombre&quot;: &quot;Obturación&quot;,  &quot;valor&quot;: &quot;2RS, goma&quot; },
+  { &quot;nombre&quot;: &quot;Carga&quot;,       &quot;valor&quot;: &quot;14 kN&quot; }
 ]
 </code></pre>
-<p>Namespace <code>custom</code>, key <code>ficha</code>, type <strong>JSON</strong>. It renders as the specification table on the product page.</p>
+<p>Namespace <code>custom</code>, key <code>ficha</code>, type <strong>JSON</strong>. It renders as the specification table on the product page.
+The keys are <code>nombre</code> and <code>valor</code>: a JSON object with any other key names renders as an empty row.</p>
 <h2 id="3-presets">3. Presets</h2>
 <p>The theme ships with three presets. Switch between them in the theme editor, under <strong>Theme settings → Presets</strong>.
 Each preset has its own colours, its own homepage and its own demo store.</p>
